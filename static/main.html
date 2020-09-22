@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+    <div id="iframe-proxy-gateway-wrapper">
+        <!--suppress HtmlDeprecatedAttribute -->
+        <iframe id="iframe-proxy-gateway"
+                src="http://localhost:9001/"
+                width="100%"
+                height="850px"
+                frameborder="0">
+
+        </iframe>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready();
+        $(function() {
+            $('#iframe-proxy-gateway').on('load', function() {
+                let iframeContents = $('#iframe-proxy-gateway').contents();
+                iframeContents.find('a').click(function() {
+                    console.log($(this));
+                });
+                // const $inner$ = $(this)[0].contentWindow.$;
+                // $inner$(function() {
+                //     console.log($inner$);
+                //     $inner$.on('click', function() {
+                //         console.log('inner dom clicked!!!')
+                //     })
+                // })
+            })
+        });
+    </script>
+
+</body>
+</html>
